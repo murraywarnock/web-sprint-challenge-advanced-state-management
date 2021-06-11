@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
     if (errorMessage) {
         // dispatch(fetchFail(errorMessage));
-        return <h2>We got an error: {errorMessage}</h2>;
+        return <h2>Error retrieving data: {errorMessage}</h2>;
     }
  
     if (isLoading) {
