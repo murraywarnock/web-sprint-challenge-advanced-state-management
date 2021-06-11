@@ -18,30 +18,34 @@ export const fetchSmurfs = () => {
         dispatch(fetchStart());
         
         //2. fetch data from api
-        axios.get("http://localhost:3333/smurfs") //WHAT API CALL??
+        axios.get("http://localhost:3333/smurfs") 
         .then(resp => {
-            console.log(resp)
+            // console.log(resp)
             //3. if fetch is successful, Fetch_Success with that data           
            dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
             //4. if fetch is not successful, Fetch_Fail with error message
+            // console.log("Error sent by dispatch fetchFail: ", err);
             dispatch(fetchFail(err));
         });
 
     }
 }
 
-
+export const addSmurf = (smurf) => {
+    // console.log("actions addSmurf: ", smurf);
+    return({type:ADD_SMURF, payload:smurf});
+}
 
 export const fetchStart = ()=> {
     return({type: START_FETCH_SMURF});
 }
 
-export const fetchSuccess = (country)=> {
-    return({type: SUCCESS_FETCH_SMURF, payload:country});
+export const fetchSuccess = (smurfs)=> {
+    return({type: SUCCESS_FETCH_SMURF, payload:smurfs});
 }
 
-export const fetchFail = (error)=> {
-    return({type: FAIL_FETCH_SMURF, payload:error});
+export const fetchFail = (err)=> {
+    return({type: FAIL_FETCH_SMURF, payload:err});
 }

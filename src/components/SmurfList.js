@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import Smurf from './Smurf';
 import { connect } from 'react-redux';
 
-import { fetchStart, fetchSuccess, fetchFail, fetchSmurfs }  from '../actions/index';
+// import { fetchStart, fetchSuccess, fetchFail, fetchSmurfs }  from '../actions/index';
+import { fetchSmurfs }  from '../actions/index';
 
 
  const SmurfList = (props)=> {
-    const { smurfs, isLoading, errMessage } = props;
+    const { smurfs, isLoading, errorMessage, dispatch } = props;
     useEffect(() => {
-        props.dispatch(fetchSmurfs());
+        dispatch(fetchSmurfs());
     }, []);
     // const isLoading = false;
     // const testSmurf = {
@@ -19,8 +20,10 @@ import { fetchStart, fetchSuccess, fetchFail, fetchSmurfs }  from '../actions/in
     //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     // }
 
-    if (errMessage) {
-        return <h2>We got an error: {errMessage}</h2>;
+    if (errorMessage) {
+        console.log("Smurflist error message: ", errorMessage);
+        // dispatch(fetchFail(errorMessage));
+        return <h2>We got an error: {errorMessage}</h2>;
     }
  
     if (isLoading) {
@@ -36,7 +39,7 @@ const mapStateToProps = state => {
     return {
       smurfs: state.smurfs,
       isLoading: state.isLoading,
-      errMessage: state.errMessage
+      errorMessage: state.errorMessage
     };
   };
   

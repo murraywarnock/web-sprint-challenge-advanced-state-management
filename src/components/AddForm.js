@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addSmurf } from "../actions"
 
 const AddForm = (props) => {
     const [state, setState] = useState({
@@ -17,8 +18,19 @@ const AddForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log("handleSubmit add form: ", state); 
         if (state.name === "" || state.position === "" || state.nickname === "") {
             errorMessage = "Name, position and nickname fields are required.";
+        } else {
+            console.log("About to dispatch")
+            return(dispatch) => {
+                dispatch(addSmurf({
+                    name: state.name,
+                    position: state.position,
+                    nickname: state.nickname,
+                    description: state.description,
+                }));   
+            }
         }
     }
 

@@ -8,7 +8,7 @@ import { START_FETCH_SMURF,
 const initialState = {
     smurfs: [],
     isLoading: false,
-    errMessage: "" // Maybe change to array of strings? For now just appending new messages to string.
+    errorMessage: "" // Maybe change to array of strings? For now just appending new messages to string.
 }
 
 const reducer = (state=initialState, action)=>{
@@ -27,10 +27,11 @@ const reducer = (state=initialState, action)=>{
         case FAIL_FETCH_SMURF:
             return({
                 ...state,
-                errMessage: action.payload,
+                errorMessage: action.type,
                 isLoading: false
         });        
         case ADD_SMURF:
+            console.log("REDUCERS ADD_SMURF ACTION: ", action);
             return({
                 ...state,
                 smurfs: [...state.smurfs, action.payload] //payload here should be a smurf object
@@ -38,7 +39,7 @@ const reducer = (state=initialState, action)=>{
         case ADD_VALUE_TO_ERROR_MESSAGE:
             return({
                 ...state,
-                errMessage: state.errMessage + ", " + action.payload //Maybe change this to array?
+                errorMessage: state.errorMessage + ", " + action.payload //Maybe change this to array?
 
         });       
         default:
