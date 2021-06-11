@@ -1,27 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Smurf from './Smurf';
 import { connect } from 'react-redux';
 
-// import { fetchStart, fetchSuccess, fetchFail, fetchSmurfs }  from '../actions/index';
-import { fetchSmurfs }  from '../actions/index';
-
-
  const SmurfList = (props)=> {
-    const { smurfs, isLoading, errorMessage, dispatch } = props;
-    useEffect(() => {
-        dispatch(fetchSmurfs());
-    }, []);
-    // const isLoading = false;
-    // const testSmurf = {
-    //     id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-    //     name:'Poppa Smurxxf',
-    //     position:'Village Leadccccer',
-    //     nickname: 'Pops',
-    //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-    // }
+    const { smurfs, isLoading, errorMessage } = props;
 
     if (errorMessage) {
-        console.log("Smurflist error message: ", errorMessage);
         // dispatch(fetchFail(errorMessage));
         return <h2>We got an error: {errorMessage}</h2>;
     }

@@ -31,7 +31,6 @@ const reducer = (state=initialState, action)=>{
                 isLoading: false
         });        
         case ADD_SMURF:
-            console.log("REDUCERS ADD_SMURF ACTION: ", action);
             return({
                 ...state,
                 smurfs: [...state.smurfs, action.payload] //payload here should be a smurf object
