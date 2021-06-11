@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
     const { smurfs, isLoading, errorMessage } = props;
 
     if (errorMessage) {
-        // dispatch(fetchFail(errorMessage));
         return <h2>Error retrieving data: {errorMessage}</h2>;
     }
  

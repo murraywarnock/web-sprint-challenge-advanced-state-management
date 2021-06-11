@@ -1,7 +1,6 @@
-//import { set } from 'msw/lib/types/context';
-import { useState } from 'react';
 import { START_FETCH_SMURF,
          SUCCESS_FETCH_SMURF,
+   
          FAIL_FETCH_SMURF,
          ADD_SMURF,
          SET_VALUE_TO_ERROR_MESSAGE } from "../actions/";
@@ -9,9 +8,8 @@ import { START_FETCH_SMURF,
 const initialState = {
     smurfs: [],
     isLoading: false,
-    errorMessage: "" // Maybe change to array of strings? For now just appending new messages to string.
+    errorMessage: "" 
 }
-
 
 const reducer = (state=initialState, action)=>{
     switch(action.type) {
@@ -35,7 +33,7 @@ const reducer = (state=initialState, action)=>{
         case ADD_SMURF:
             return({
                 ...state,
-                smurfs: [...state.smurfs, action.payload] //payload here should be a smurf object
+                smurfs: [...state.smurfs, action.payload] 
             });
         case SET_VALUE_TO_ERROR_MESSAGE:
 

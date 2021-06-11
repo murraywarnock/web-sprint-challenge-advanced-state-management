@@ -33,7 +33,6 @@ const AddForm = (props) => {
                     description: state.description,
                 }));
         }
-    //    props.setError("");        
     }
 
     return(<section>
@@ -55,7 +54,6 @@ const AddForm = (props) => {
                 <label htmlFor="description">Description:</label><br/>
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
-{console.log("Props in AddForm: ", props)}
             {
                 props.errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
             }
@@ -69,6 +67,7 @@ const mapStateToProps = (state)=> {
         position: state.position,
         nickname: state.nickname,
         description: state.description,
+        errorMessage: state.errorMessage
     }
   }
   
