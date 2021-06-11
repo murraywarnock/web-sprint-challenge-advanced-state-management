@@ -5,7 +5,7 @@ import { START_FETCH_SMURF,
          ADD_SMURF,
          ADD_VALUE_TO_ERROR_MESSAGE } from "../actions/";
 
-export const initialState = {
+const initialState = {
     smurfs: [],
     isLoading: false,
     errMessage: "" // Maybe change to array of strings? For now just appending new messages to string.

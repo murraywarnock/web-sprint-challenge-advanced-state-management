@@ -22,7 +22,7 @@ export const fetchSmurfs = () => {
         .then(resp => {
             console.log(resp)
             //3. if fetch is successful, Fetch_Success with that data           
-           // dispatch(fetchSuccess(resp.data.countries[0]));
+           dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
             //4. if fetch is not successful, Fetch_Fail with error message
