@@ -50,6 +50,6 @@ export const fetchFail = (err)=> {
     return({type: FAIL_FETCH_SMURF, payload:err});
 }
 
-export const setValueToErrorMessage = (err) => {
+export const setError = (err) => {
     return({type: SET_VALUE_TO_ERROR_MESSAGE, payload:err});
 }
