@@ -8,32 +8,39 @@ import { START_FETCH_SMURF,
 export const initialState = {
     smurfs: [],
     isLoading: false,
-    errMessage: ""
+    errMessage: "" // Maybe change to array of strings? For now just appending new messages to string.
 }
 
 const reducer = (state=initialState, action)=>{
     switch(action.type) {
         case START_FETCH_SMURF:
-            return {
-
-            }
+            return({
+                ...state,
+                isLoading: true
+            });
         case SUCCESS_FETCH_SMURF:
-            return {
-
-            }
+            return({
+                ...state,
+                isLoading: false,
+                smurfs: action.payload
+            });
         case FAIL_FETCH_SMURF:
-            return {
-
-        }        
+            return({
+                ...state,
+                errMessage: action.payload,
+                isLoading: false
+        });        
         case ADD_SMURF:
-            return {
+            return({
                 ...state,
                 smurfs: [...state.smurfs, action.payload] //payload here should be a smurf object
-            }
+            });
         case ADD_VALUE_TO_ERROR_MESSAGE:
-            return {
+            return({
+                ...state,
+                errMessage: state.errMessage + ", " + action.payload //Maybe change this to array?
 
-        }        
+        });       
         default:
             return state;
     }
