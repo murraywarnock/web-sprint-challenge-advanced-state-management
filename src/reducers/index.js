@@ -8,6 +8,7 @@ import { START_FETCH_SMURF,
 const initialState = {
     smurfs: [],
     isLoading: false,
+    dataError: "",
     errorMessage: "" 
 }
 
@@ -27,7 +28,7 @@ const reducer = (state=initialState, action)=>{
         case FAIL_FETCH_SMURF:
             return({
                 ...state,
-                errorMessage: action.type,
+                dataError: action.type,
                 isLoading: false
         });        
         case ADD_SMURF:

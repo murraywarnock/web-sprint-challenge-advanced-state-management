@@ -15,19 +15,13 @@ export const SET_VALUE_TO_ERROR_MESSAGE = "SET_VALUE_TO_ERROR_MESSAGE";
 
 export const fetchSmurfs = () => {
     return (dispatch) => {
-        //1. Fetch_Start
         dispatch(fetchStart());
         
-        //2. fetch data from api
         axios.get("http://localhost:3333/smurfs") 
         .then(resp => {
-            // console.log(resp)
-            //3. if fetch is successful, Fetch_Success with that data           
            dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
-            //4. if fetch is not successful, Fetch_Fail with error message
-            // console.log("Error sent by dispatch fetchFail: ", err);
             dispatch(fetchFail(err));
         });
 

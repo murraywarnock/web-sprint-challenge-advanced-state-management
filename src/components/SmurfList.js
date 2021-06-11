@@ -3,10 +3,10 @@ import Smurf from './Smurf';
 import { connect } from 'react-redux';
 
  const SmurfList = (props)=> {
-    const { smurfs, isLoading, errorMessage } = props;
+    const { smurfs, isLoading, dataError } = props;
 
-    if (errorMessage) {
-        return <h2>Error retrieving data: {errorMessage}</h2>;
+    if (dataError ) {
+        return <h2>Error retrieving data: {dataError}</h2>;
     }
  
     if (isLoading) {
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
     return {
       smurfs: state.smurfs,
       isLoading: state.isLoading,
-      errorMessage: state.errorMessage
+      dataError: state.dataError
     };
   };
   
